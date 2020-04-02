@@ -29,8 +29,8 @@ public class oldPosUpdate : MonoBehaviour
             SwapTopic(playerScript.gameObject);  
             playerScript.inCutscene = false;
         }
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.35f, transform.position.z);
-        transform.position = Vector3.Lerp(pos, topicTrans.position, Time.deltaTime * 8);
+        Vector3 pos = new Vector3(topicTrans.position.x, topicTrans.position.y + 2f, topicTrans.position.z);
+        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * 8);
 
         if (playerScript.path != null) //consider (!playerScript.path)
         {

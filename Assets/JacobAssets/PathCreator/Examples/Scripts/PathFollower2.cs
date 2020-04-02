@@ -56,7 +56,7 @@ namespace PathCreation.Examples
             if (!other.CompareTag("Player")) return;
             
             player = other.gameObject;
-            other.transform.SetParent(this.transform);
+            player.transform.SetParent(this.transform);
             Debug.Log("parented");
         }
 
@@ -64,8 +64,8 @@ namespace PathCreation.Examples
         {
             if (!other.CompareTag("Player")) return;
             
-            player = null;
             other.transform.SetParent(null);
+            player = null;
             Debug.Log("unparented");
         }
     }
