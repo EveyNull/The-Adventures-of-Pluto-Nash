@@ -76,7 +76,6 @@ public class MoveScript : MonoBehaviour
                 {
                     if(collider.GetComponent<Button>() && grounded)
                     {
-                        collider.GetComponent<Button>().HitButton(this);
                     }
                 }
             }

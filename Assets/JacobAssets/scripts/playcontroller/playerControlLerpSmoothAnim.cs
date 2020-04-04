@@ -348,7 +348,7 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
                     yield return new WaitForSeconds(.5f);
                     isAttacking = false;
                     topSpeed *= 6;
-                }
+            }
             }
             else if (Input.GetButtonDown("Ultimate") && points >= 3)
             {

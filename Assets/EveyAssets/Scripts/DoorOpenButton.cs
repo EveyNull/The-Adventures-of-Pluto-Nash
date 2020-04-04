@@ -47,14 +47,8 @@ public class DoorOpenButton : Button
         }
     }
 
-    public override void HitButton(MoveScript target)
+    public override void HitButton()
     {
-        if (doorClosed)
-        {
-            target.animator.ResetTrigger("AttackTrigger");
-            target.rigidbody.velocity = Vector3.zero;
-            StartCoroutine(DoorOpenCutscene(target));
-        }
     }
 
     IEnumerator DoorOpenCutscene(MoveScript target)
