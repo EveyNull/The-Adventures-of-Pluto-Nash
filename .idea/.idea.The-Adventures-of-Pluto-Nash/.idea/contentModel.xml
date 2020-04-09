@@ -7,7 +7,24 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="BradAssets" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="BreakablePlatform.cs" t="Include" />
+            <e p="CollapsingCorridor.cs" t="Include" />
+            <e p="Door.cs" t="Include" />
+            <e p="PlayerCam.cs" t="Include" />
+            <e p="PlayerMovement.cs" t="Include" />
+          </e>
+        </e>
         <e p="EveyAssets" t="Include">
+          <e p="CombinationLock" t="Include">
+            <e p="Button.cs" t="Include" />
+            <e p="CombinationLock.cs" t="Include" />
+            <e p="CombinationLockButton.cs" t="Include" />
+            <e p="DoorOpener.cs" t="Include" />
+            <e p="ThreePartDoor.cs" t="Include" />
+            <e p="ThreePartDoorOpen.cs" t="Include" />
+          </e>
           <e p="PowerUp" t="Include">
             <e p="Scripts" t="Include">
               <e p="PowerUpMove.cs" t="Include" />
@@ -20,7 +37,6 @@
           <e p="Scripts" t="Include">
             <e p="AxisFollowCam.cs" t="Include" />
             <e p="BrokenDoor.cs" t="Include" />
-            <e p="Button.cs" t="Include" />
             <e p="ButtonSeenCutscene.cs" t="Include" />
             <e p="CameraMoveScript.cs" t="Include" />
             <e p="Character.cs" t="Include" />
@@ -29,14 +45,9 @@
             <e p="DoorOpenButton.cs" t="Include" />
             <e p="DoorScripts" t="Include">
               <e p="BrokenDoorOpen.cs" t="Include" />
-              <e p="CombinationLock.cs" t="Include" />
-              <e p="CombinationLockButton.cs" t="Include" />
-              <e p="DoorOpener.cs" t="Include" />
               <e p="DoorOpenScript.cs" t="Include" />
               <e p="FourPartDoor.cs" t="Include" />
               <e p="FourPartDoorOpen.cs" t="Include" />
-              <e p="ThreePartDoor.cs" t="Include" />
-              <e p="ThreePartDoorOpen.cs" t="Include" />
             </e>
             <e p="EnableMoveControl.cs" t="Include" />
             <e p="enemy.cs" t="Include" />

@@ -140,6 +140,8 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
             camScript.in2D = false;
             
         }
+
+        Debug.Log(velocity);
         jones.Move(velocity * Time.deltaTime);
     }
 
@@ -379,7 +381,6 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
                 }
             }
         }
-       
         Vector3 splinePos = path.path.GetPointAtDistance(pathPosition, eOPinstruction);
         transform.position = new Vector3(splinePos.x, position.y, splinePos.z);
     }
