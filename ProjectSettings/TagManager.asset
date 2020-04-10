@@ -10,6 +10,8 @@ TagManager:
   - world
   - Collide
   - Explosion
+  - LeftFist
+  - S
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - enemy
   - 
   - 
   - 

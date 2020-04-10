@@ -115,7 +115,7 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
 
             Jump();
 
-            StartCoroutine(Attack());
+            //StartCoroutine(Attack());
         }
         else
         {
@@ -336,37 +336,37 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
         else tireSmoke.SetActive(false);
     }
 
-    private IEnumerator Attack()
-    {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                if (!isAttacking)
-                {
-                    isAttacking = true;
-                    anim.ResetTrigger("Stunned");
-                    anim.SetTrigger("AttackTrigger");
-                    topSpeed = topSpeed / 6;
-                    yield return new WaitForSeconds(.5f);
-                    isAttacking = false;
-                    topSpeed *= 6;
-            }
-            }
-            else if (Input.GetButtonDown("Ultimate") && points >= 3)
-            {
-                voiceline.Play();
-                Vector3 tirePos = transform.position + new Vector3(0, 2, 0);
-                GameObject TIRE = Instantiate(RIPTIRE, tirePos, transform.rotation);
-                tireControl control = TIRE.GetComponent<tireControl>();
+    //private IEnumerator Attack()
+    //{
+    //        if (Input.GetButtonDown("Fire1"))
+    //        {
+    //            if (!isAttacking)
+    //            {
+    //                isAttacking = true;
+    //                anim.ResetTrigger("Stunned");
+    //                anim.SetTrigger("AttackTrigger");
+    //                topSpeed = topSpeed / 6;
+    //                yield return new WaitForSeconds(.5f);
+    //                isAttacking = false;
+    //                topSpeed *= 6;
+    //        }
+    //        }
+    //        else if (Input.GetButtonDown("Ultimate") && points >= 3)
+    //        {
+    //            voiceline.Play();
+    //            Vector3 tirePos = transform.position + new Vector3(0, 2, 0);
+    //            GameObject TIRE = Instantiate(RIPTIRE, tirePos, transform.rotation);
+    //            tireControl control = TIRE.GetComponent<tireControl>();
 
-                control.camera = camera;
-                control.oldPosObj = oldPosObj;
-                control.player = this.gameObject;
+    //            control.camera = camera;
+    //            control.oldPosObj = oldPosObj;
+    //            control.player = this.gameObject;
                     
-                points -= 3;
-                inCutscene = true;
-                oldPosUpdateScript.SwapTopic(TIRE);
-            }
-    }
+    //            points -= 3;
+    //            inCutscene = true;
+    //            oldPosUpdateScript.SwapTopic(TIRE);
+    //        }
+    //}
 
     void SplineMove2D()
     {

@@ -25,8 +25,7 @@ public class Attacking : MonoBehaviour
    public bool hitted;
 
     public bool hasAttacked;
-    Renderer render;
-    Combat_Slime getSlime;
+
 
     public int Damage = 1;
 
@@ -49,7 +48,7 @@ public class Attacking : MonoBehaviour
         control = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         SLIME = GameObject.FindGameObjectWithTag("S");
-       render = GetComponent<Renderer>();
+ 
 
 
     }
@@ -69,37 +68,35 @@ public class Attacking : MonoBehaviour
             StartCoroutine(respawn());
         }
 
-        if (Input.GetKeyDown("JosephSwordAttack") && hasAttacked == false)
+        if (Input.GetButtonDown("JosephAttack") && hasAttacked == false)
         {
-            //hasAttacked = true;
-            anim.SetTrigger("SwordAttack");
-            Debug.Log("swinging");
-            //anim.Play("Attack");
-           // StartCoroutine(hastacked());
+          
+            anim.SetTrigger("AttackTrigger");
+            Debug.Log("Attacking");
+        
         }
 
 
-        if(Input.GetKeyDown("JosephButtonPress") && hasAttacked == false)
+        if(Input.GetButtonDown("JosephButtonPress") && hasAttacked == false)
         {
             anim.SetTrigger("Kick");
         }
 
 
-         hpb.health(Phealth); 
+      //   hpb.health(Phealth); 
 
 
-        if (Input.GetKeyDown("JosephSwordAttack") && hasAttacked == false)
+        if (Input.GetButtonDown("JosephAttack") && hasAttacked == false)
         {
 
-           // anim.SetInteger("ATTACK", 3);
             hasAttacked = true;
          
             StartCoroutine(delay());
-            // Newattack();
+     
             StartCoroutine(hastacked());
         }
 
-        if ( Input.GetKeyDown("JosephButtonPress") && hasAttacked == false)
+        if ( Input.GetButtonDown("JosephButtonPress") && hasAttacked == false)
         {
             hasAttacked = true;
 
@@ -108,10 +105,10 @@ public class Attacking : MonoBehaviour
             StartCoroutine(hastacked());
         }
 
-        if (Input.GetKeyUp("JosephSwordAttack") || Input.GetKeyUp(KeyCode.Joystick1Button2))
+        if (Input.GetButtonUp("JosephAttack") || Input.GetKeyUp(KeyCode.Joystick1Button2))
         {
 
-           anim.SetInteger("ATTACK", 0);
+          // anim.SetInteger("ATTACK", 0);
 
        }
 
@@ -128,8 +125,7 @@ public class Attacking : MonoBehaviour
 
         if (hitted == true)
         {
-           
-           // render.material = hit;
+      
             Debug.Log("hitted is true dont lie");
             StartCoroutine(stophit());
         }
@@ -144,52 +140,10 @@ public class Attacking : MonoBehaviour
         yield return new WaitForSeconds(1f);
         hitted = false;
     }
-    void Attack()
-    {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && hasAttacked == false)
-        {
-            //hasAttacked = true;  
-            switch (Random.Range(0, 5))
-            {
-                case 1:
-                    anim.SetInteger("ATTACK", 1);
-                    break;
-                case 2:
-                    anim.SetInteger("ATTACK", 2);
-                    break;
-                case 3:
-                    anim.SetInteger("ATTACK", 3);
-                    break;
-                case 4:
-                    anim.SetInteger("ATTACK", 4);
-                    break;
-                case 5:
-                    anim.SetInteger("ATTACK", 5); 
-                    break;
-                case 6:
-                    anim.SetInteger("ATTACK", 6);
-                    break;
-            }
-            StartCoroutine(hastacked());
-            Debug.Log("attacking");
-            // choosing a random attack animation when the attack button is pressed.
-        }
-        
-        if (Input.GetKeyUp(KeyCode.Joystick1Button3))
-        {
-            
-            anim.SetInteger("ATTACK", 0);
-          
-        }
-    }
+   
 
 
 
-IEnumerator stophitted()
-    {
-        yield return new WaitForSeconds(0.5f);
-        hitted = false;
-    }
 
 
 
@@ -199,46 +153,12 @@ IEnumerator stophitted()
         yield return new WaitForSeconds(0.75f);
         hasAttacked = false;
     }
-    //private void OnCollisionEnter(Collision collision)
-    //{
-        
-    //        if (collision.transform.CompareTag("S"))
-    //        {
-    //        Debug.Log("helllooooooooooo im gay");
-    //            playHit = true;
-    //        }
-        
-    //}
-
-
-
-    //void hitting()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Joystick1Button3) && hasAttacked == false )
-    //    {
-    //        if (Physics.Raycast(transform.position + transform.up * 0.25f, transform.forward, out hitfront, Raylength))
-    //        {
-
-    //            if (hitfront.collider.gameObject.tag == "S")
-    //            {
-    //                hasAttacked = true;
-    //                hitted = true;
-    //                getSlime = hitfront.transform.gameObject.GetComponent<Combat_Slime>();
-    //                getSlime.health -= 1;
-    //                Debug.Log("hit");
-    //                StartCoroutine(stophitted());
-    //                StartCoroutine(hastacked());
-    //            }
-    //        }
-    //    }
-
-
-    //}
+ 
 
         IEnumerator delay()
     {
         yield return new WaitForSeconds(0.4f);
-        //anim.SetInteger("ATTACK", 3);
+  
 
         Collider[] hitenemy = Physics.OverlapSphere(attackpoint.position, attackrange, enemylayer);
 
@@ -252,22 +172,7 @@ IEnumerator stophitted()
             
         }
     }
-    void Newattack()
-    {
-       // anim.SetInteger("ATTACK", 3);
 
-       //Collider[] hitenemy = Physics.OverlapSphere(attackpoint.position, attackrange, enemylayer);
-
-
-       // foreach(Collider enemy in hitenemy)
-       // {
-            
-       //    Debug.Log("we hit" + enemy.name);
-       //    enemy.GetComponent<Combat_Slime>().TakeDamage(Damage);
-       // }
-
-
-    }
   void OnDrawGizmosSelected()
     {
         if (attackpoint == null)

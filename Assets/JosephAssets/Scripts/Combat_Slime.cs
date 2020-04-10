@@ -7,18 +7,17 @@ using UnityEngine.AI;
 public class Combat_Slime : MonoBehaviour
 {
    public int health = 3;
-    public int health2 = 2;
+    public int maxhealth = 3;
     public GameObject stage2;
-    public int stage;
-  public Animator anim;
+
     public ParticleSystem Dead;
    public NavMeshAgent NavMesh;
     GameObject player;
     public HealthBar helathb;
     Rigidbody rb;
-
-   // public GameObject player;
-
+    public GameObject squirm;
+    public Animator anim;
+    public int FormsLeft = 2;
     Renderer render;
     public Material hit;
     public Material norm;
@@ -26,10 +25,10 @@ public class Combat_Slime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim.enabled = false;
+
        rb = gameObject.GetComponent<Rigidbody>();
         render = gameObject.GetComponent<Renderer>();
-       anim = GetComponent<Animator>();
+        anim = gameObject.GetComponentInChildren<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         NavMesh = GetComponent<NavMeshAgent>();
     }
@@ -38,35 +37,71 @@ public class Combat_Slime : MonoBehaviour
     {
 
         health -= damage;
-        helathb.health(health);
         
-       StartCoroutine(hitback());
+        StartCoroutine(hitback());
     }
 
     // Update is called once per frame
     void Update()
     {
-        //StartCoroutine(deathdelay());
+
         die();
+        helathb.health(health);
     }
     
 IEnumerator deathdelay()
     {
-        anim.enabled = true;
-        anim.Play("death");
-        NavMesh.isStopped = true;
-        yield return new WaitForSeconds(1f);
-        anim.enabled = false;
-        NavMesh.isStopped = false;
-        Instantiate(Dead, transform.position, Quaternion.identity);
-        stage = +1;
-        gameObject.SetActive(false);
-      
-        for (int i = 0; i < 2; i++)
-        {
 
-            Instantiate(stage2, transform.position, transform.rotation);
+
+        // NavMesh.isStopped = true;
+        // yield return new WaitForSeconds(1f);
+
+        //NavMesh.isStopped = false;
+        //Instantiate(Dead, transform.position, Quaternion.identity);
+
+        // gameObject.SetActive(false);
+
+        // for (int i = 0; i < 2; i++)
+        // {
+
+        // Instantiate(stage2, transform.position, transform.rotation);
+        // }
+        anim.SetTrigger("death");
+        yield return new WaitForSeconds(1.16f);
+
+        Vector3 pos = transform.position;
+
+        if (FormsLeft != 0)
+        {
+            SpawnAndScale(new Vector3(pos.x, pos.y, pos.z + 1));
+            SpawnAndScale(new Vector3(pos.x, pos.y, pos.z - 1));
         }
+        Destroy(gameObject);
+    }
+
+
+    private void SpawnAndScale(Vector3 pos)
+    {
+        Debug.Log("spawning enemy");
+        GameObject spawn1 = Instantiate(squirm, pos, transform.rotation);
+
+        spawn1.transform.localScale -= spawn1.transform.localScale / 2;
+        Combat_Slime script = spawn1.GetComponent<Combat_Slime>();
+        spawn1.GetComponent<enemyController>().hitBack = 0;
+        script.FormsLeft -= 1;
+
+        if (script.FormsLeft == 1)
+        {
+             script.health = maxhealth- 1;
+           
+        }
+        else if (script.FormsLeft == 0)
+        {
+           
+            script.health = maxhealth - 2;
+         
+        }
+        Debug.Log(script.health);
     }
 
 
@@ -76,30 +111,16 @@ IEnumerator deathdelay()
      
         if(health == 0)
         {
-           // anim.Play("death");
-          //  NavMesh.isStopped = true;
+        
             StartCoroutine(deathdelay());
-           // Instantiate(Dead, transform.position, Quaternion.identity);
-           // stage =+1;
-           //gameObject.SetActive(false);
-            
-           // for (int i = 0; i < 2; i++)
-           // {
-
-           //         Instantiate(stage2, transform.position, transform.rotation);                      
-           // }       
+             
         }
     }
 
-    IEnumerator colour()
-    {
-        render.material = hit;
-        yield return new WaitForSeconds(2f);
-        render.material = norm;
-    }
+ 
     IEnumerator hitback()
     {
-        rb.AddForce(player.transform.forward * 600f);
+        rb.AddForce(player.transform.forward * 600);
         rb.detectCollisions = false;
    
         yield return new WaitForSeconds(0.25f);

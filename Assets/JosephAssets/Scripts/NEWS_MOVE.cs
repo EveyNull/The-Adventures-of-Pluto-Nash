@@ -13,9 +13,6 @@ public class NEWS_MOVE : MonoBehaviour
 
     bool intimer = false;
 
-    public Material angry;
-
-    public Material norm;
 
     public GameObject Player;
 
@@ -33,7 +30,7 @@ public class NEWS_MOVE : MonoBehaviour
 
     Combat_Slime getcom;
 
-    Renderer render;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +38,7 @@ public class NEWS_MOVE : MonoBehaviour
         getattack = GameObject.FindGameObjectWithTag("Player").GetComponent<Attacking>();
         NavMesh = GetComponent<NavMeshAgent>();
         Rb = GetComponent<Rigidbody>();
-        render = GetComponent<Renderer>();
+     
         // Rb.velocity = Vector3.zero;
         NavMesh.isStopped = true;
         NavMesh.speed = 8;
@@ -58,14 +55,14 @@ public class NEWS_MOVE : MonoBehaviour
 
         if (!intimer && fight == false)
         {
-            render.material = norm;
+     
             StartCoroutine(timer());
         }
 
         if(fight == true)
         {
            
-            render.material = angry;
+          
            NavMesh.SetDestination(PLAYER.transform.position);
            // StartCoroutine(JUMPtoPlayer());
             //attacking();
@@ -98,8 +95,8 @@ public class NEWS_MOVE : MonoBehaviour
     Vector3 RandoPos()
     {
         NavMesh.isStopped = false;
-        float x = Random.Range( 4 , 44);
-        float z = Random.Range(65,105);
+        float x = Random.Range( -5 , 7);
+        float z = Random.Range(0,16);
 
         Vector3 pos = new Vector3(x, 0, z);
         return pos;
