@@ -63,6 +63,11 @@
             <e p="SpeedPowerUp.cs" t="Include" />
           </e>
         </e>
+        <e p="FinalAssets" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="respawner.cs" t="Include" />
+          </e>
+        </e>
         <e p="JacobAssets" t="Include">
           <e p="PathCreator" t="Include">
             <e p="Core" t="Include">
