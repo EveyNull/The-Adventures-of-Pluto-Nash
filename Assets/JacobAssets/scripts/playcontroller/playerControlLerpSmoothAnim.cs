@@ -140,8 +140,7 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
             camScript.in2D = false;
             
         }
-
-        Debug.Log(velocity);
+        
         jones.Move(velocity * Time.deltaTime);
     }
 
