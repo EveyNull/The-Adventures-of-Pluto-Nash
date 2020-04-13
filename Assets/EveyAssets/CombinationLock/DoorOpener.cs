@@ -9,4 +9,5 @@ public abstract class DoorOpener : MonoBehaviour
     [HideInInspector]
     public bool complete = false;
     public abstract void StartDoorOpen();
+    public abstract void SetDoorOpen();
 }

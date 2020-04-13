@@ -23,9 +23,22 @@ public class CombinationLock : MonoBehaviour
 
     private void Start()
     {
-        for(int i = 0; i < locks.Length; i++)
+        if (FindObjectOfType<SceneChangeData>().previousScene == 2)
         {
-            locks[i] = false;
+            foreach(Light light in doorLights)
+            {
+                light.color = Color.green;
+            }
+            door.SetDoorOpen();
+            opened = true;
+            
+        }
+        else
+        {
+            for (int i = 0; i < locks.Length; i++)
+            {
+                locks[i] = false;
+            }
         }
     }
 

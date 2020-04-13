@@ -48,4 +48,9 @@ public class FourPartDoor : DoorOpener
         doorParts[3].StartOpening(1.5f, doorSpeed);
         doorOpen.Play();
     }
+
+    public override void SetDoorOpen()
+    {
+        throw new System.NotImplementedException();
+    }
 }

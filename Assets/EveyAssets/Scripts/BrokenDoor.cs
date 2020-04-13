@@ -48,4 +48,9 @@ public class BrokenDoor : DoorOpener
         doorParts[0].StartOpening(doorSpeed, sparkL);
         doorParts[1].StartOpening(doorSpeed, sparkR);
     }
+
+    public override void SetDoorOpen()
+    {
+        throw new System.NotImplementedException();
+    }
 }

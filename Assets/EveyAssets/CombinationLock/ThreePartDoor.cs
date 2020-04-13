@@ -47,4 +47,12 @@ public class ThreePartDoor : DoorOpener
         doorParts[2].StartOpening(false, doorSpeed);
         doorOpen.Play();
     }
+
+    public override void SetDoorOpen()
+    {
+        foreach(ThreePartDoorOpen doorOpen in doorParts)
+        {
+            doorOpen.gameObject.SetActive(false);
+        }
+    }
 }
