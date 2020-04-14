@@ -66,6 +66,7 @@
         <e p="FinalAssets" t="Include">
           <e p="Scripts" t="Include">
             <e p="respawner.cs" t="Include" />
+            <e p="SpikeTimer.cs" t="Include" />
           </e>
         </e>
         <e p="JacobAssets" t="Include">
@@ -312,6 +313,9 @@
             <e p="Switch.cs" t="Include" />
           </e>
         </e>
+        <e p="SceneChangeData.cs" t="Include" />
+        <e p="SceneTransition.cs" t="Include" />
+        <e p="SetStartPos.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
