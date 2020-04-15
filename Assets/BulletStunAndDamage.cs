@@ -4,23 +4,13 @@ using UnityEngine;
 
 public class BulletStunAndDamage : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool deathEnabled = true;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             other.GetComponent<playerControlLerpSmoothAnim>().Stun();
-            Destroy(transform.parent.gameObject);
+            if(deathEnabled) Destroy(transform.parent.gameObject);
         }
     }
 }

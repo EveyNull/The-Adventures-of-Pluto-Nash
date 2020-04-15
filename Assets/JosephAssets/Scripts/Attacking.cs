@@ -68,7 +68,7 @@ public class Attacking : MonoBehaviour
             StartCoroutine(respawn());
         }
 
-        if (Input.GetButtonDown("JosephAttack") && hasAttacked == false)
+        if (Input.GetButtonDown("Fire1") && hasAttacked == false)
         {
           
             anim.SetTrigger("AttackTrigger");
@@ -86,7 +86,7 @@ public class Attacking : MonoBehaviour
       //   hpb.health(Phealth); 
 
 
-        if (Input.GetButtonDown("JosephAttack") && hasAttacked == false)
+        if (Input.GetButtonDown("Fire1") && hasAttacked == false)
         {
 
             hasAttacked = true;
@@ -105,7 +105,7 @@ public class Attacking : MonoBehaviour
             StartCoroutine(hastacked());
         }
 
-        if (Input.GetButtonUp("JosephAttack") || Input.GetKeyUp(KeyCode.Joystick1Button2))
+        if (Input.GetButtonUp("Fire1") || Input.GetKeyUp(KeyCode.Joystick1Button2))
         {
 
           // anim.SetInteger("ATTACK", 0);

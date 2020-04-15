@@ -16,6 +16,7 @@
             <e p="PlayerMovement.cs" t="Include" />
           </e>
         </e>
+        <e p="BulletStunAndDamage.cs" t="Include" />
         <e p="EveyAssets" t="Include">
           <e p="CombinationLock" t="Include">
             <e p="Button.cs" t="Include" />
@@ -65,6 +66,8 @@
         </e>
         <e p="FinalAssets" t="Include">
           <e p="Scripts" t="Include">
+            <e p="floater.cs" t="Include" />
+            <e p="PlayHeightMatch.cs" t="Include" />
             <e p="respawner.cs" t="Include" />
             <e p="SpikeTimer.cs" t="Include" />
           </e>
@@ -311,6 +314,10 @@
             <e p="Speed_Pickup.cs" t="Include" />
             <e p="Spline.cs" t="Include" />
             <e p="Switch.cs" t="Include" />
+          </e>
+          <e p="shooty" t="Include">
+            <e p="EnemyProjectile.cs" t="Include" />
+            <e p="PROJmovement.cs" t="Include" />
           </e>
         </e>
         <e p="SceneChangeData.cs" t="Include" />

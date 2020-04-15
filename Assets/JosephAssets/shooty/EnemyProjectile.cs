@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     public GameObject PROJ;
-    public float timer = 0;
+    public float cooldown = 3.958f;
+    private float timer = 0;
     GameObject Player;
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class EnemyProjectile : MonoBehaviour
        
 
         timer += Time.deltaTime; 
-        if(timer >= 5)
+        if(timer >= cooldown)
         {
             Instantiate(PROJ, transform.position, transform.rotation);
             timer = 0;

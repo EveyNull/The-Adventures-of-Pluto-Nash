@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Media;
 using UnityEngine;
 
 public class PROJmovement : MonoBehaviour
 {
     GameObject player;
     public int Speed = 5;
+    public float lifetime = 20f;
     Vector3 PlayerPos;
     public bool KeepGoing = false;
     // Start is called before the first frame update
@@ -18,16 +20,23 @@ public class PROJmovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (lifetime <= 0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            lifetime -= Time.deltaTime;
+        }
+        
         PlayerPos = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z);
 
-       
-
-        if (KeepGoing == false)
+        if (!KeepGoing)
         {
             transform.LookAt(PlayerPos);
             towardsPlayer();
         }
-        if(KeepGoing == true)
+        if(KeepGoing)
         {
             Foward();
         }
