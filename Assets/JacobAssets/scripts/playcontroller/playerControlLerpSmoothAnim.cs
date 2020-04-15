@@ -8,6 +8,7 @@ using UnityEngine;
 using PathCreation;
 using UnityEditor.UIElements;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class playerControlLerpSmoothAnim : MonoBehaviour
 {
@@ -23,6 +24,11 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
     
     public GameObject bodyTire;
     public GameObject tireSmoke;
+
+    //UI Elements
+    public Text pointsText;
+    public Text doubleJumpText;
+    public Text superSpeedText;
 
     //Camera
     CameraLook camScript;
@@ -67,6 +73,7 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
     private GameObject PunchParticle;
     
     public int points = 0;
+   
 
     //combat
     bool isAttacking = false;
@@ -142,6 +149,8 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
         }
         
         jones.Move(velocity * Time.deltaTime);
+
+        pointsText.text = ": " + points.ToString();
     }
 
     //take input from both horizontal and vertical, X and Z in the world and make it input.
@@ -263,6 +272,8 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
             jumpTimeRemaining = 10f;
             JumpParticle.SetActive(true);
             JumpParticle.GetComponent<ParticleSystem>().Play();
+            doubleJumpText.enabled = true;
+            doubleJumpText.text = "Double Jump!";
         }
 
         if (IsTimerZero(ref jumpTimeRemaining))
@@ -270,6 +281,7 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
 
             JumpParticle.SetActive(false);
             maxJumps = 1;
+            doubleJumpText.enabled = false;
         }
     }
 
@@ -291,6 +303,9 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
             speedTimeRemaining = 10f;
             SpeedParticle.SetActive(true);
             SpeedParticle.GetComponent<ParticleSystem>().Play();
+
+            superSpeedText.enabled = true;
+            superSpeedText.text = "Super Speed!";
         }
 
         if (speedTimeRemaining > 0)
@@ -306,6 +321,7 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
         {
             SpeedParticle.SetActive(false);
             topSpeed = 10;
+            superSpeedText.enabled = false;
         }
     }
 
@@ -332,8 +348,11 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
         if (points >= 3)
         {
             tireSmoke.SetActive(true);
+            pointsText.color = Color.red;
         }
         else tireSmoke.SetActive(false);
+        
+
     }
 
     //private IEnumerator Attack()
