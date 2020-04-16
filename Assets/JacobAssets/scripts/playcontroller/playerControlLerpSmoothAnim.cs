@@ -137,18 +137,20 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
 
         checkPoints();
 
-        if (in2D)
-        {
-            camScript.in2D = true;
-            SplineMove2D();
-        }
-        else
-        {
-            camScript.in2D = false;
-            
-        }
-        
         jones.Move(velocity * Time.deltaTime);
+        
+        if (!inCutscene)
+        {
+            if (in2D)
+            {
+                camScript.in2D = true;
+                SplineMove2D();
+            }
+            else
+            {
+                camScript.in2D = false;
+            }
+        }
 
         pointsText.text = ": " + points.ToString();
     }
@@ -391,16 +393,13 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
     {
         if (!blocked)
         {
-            if (input.magnitude != 0)
+            if (input.magnitude != 0 && input.x != 0)
             {
-                if (input.x != 0)
-                {
-                    pathPosition += input.x * Time.deltaTime * topSpeed;
-                }
+                pathPosition -= input.x * Time.deltaTime * topSpeed;
             }
         }
         Vector3 splinePos = path.path.GetPointAtDistance(pathPosition, eOPinstruction);
-        transform.position = new Vector3(splinePos.x, position.y, splinePos.z);
+        transform.position = new Vector3(splinePos.x, transform.position.y, splinePos.z);
     }
 
     public void Stun()
