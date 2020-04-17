@@ -67,6 +67,8 @@
         <e p="FinalAssets" t="Include">
           <e p="Scripts" t="Include">
             <e p="floater.cs" t="Include" />
+            <e p="keyPickup.cs" t="Include" />
+            <e p="LockUnlock.cs" t="Include" />
             <e p="PlayHeightMatch.cs" t="Include" />
             <e p="respawner.cs" t="Include" />
             <e p="SpikeTimer.cs" t="Include" />
