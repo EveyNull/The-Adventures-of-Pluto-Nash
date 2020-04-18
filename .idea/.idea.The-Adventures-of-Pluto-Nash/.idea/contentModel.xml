@@ -70,6 +70,7 @@
             <e p="keyPickup.cs" t="Include" />
             <e p="LockUnlock.cs" t="Include" />
             <e p="PlayHeightMatch.cs" t="Include" />
+            <e p="pushButtonToDamageOrb.cs" t="Include" />
             <e p="respawner.cs" t="Include" />
             <e p="SpikeTimer.cs" t="Include" />
           </e>
