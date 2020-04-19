@@ -32,7 +32,27 @@ public class CameraLook : MonoBehaviour
 
     private void Update()
     {
-
+        //Vector3 camDirection = topic.position - this.transform.position;
+        //RaycastHit hit;
+        
+        //if (Physics.Raycast(this.transform.position, camDirection, out hit, 7))
+        //{
+        //    if (!hit.collider.CompareTag("Player"))
+        //    {
+        //        Debug.DrawRay(this.transform.position, camDirection * hit.distance, Color.yellow);
+        //        Debug.Log("BLOCKED");
+        //        currentDist = hit.distance;
+        //    }
+        //    else
+        //    {
+        //        currentDist = camDist;
+        //    }
+        //}
+        //else
+        //{
+        //    currentDist = camDist;
+        //}
+        
         GetInput();
 
         if (countdown <= 0)
