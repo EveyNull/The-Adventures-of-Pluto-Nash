@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class pushButtonToDamageOrb : MonoBehaviour
 {
-    public Transform orb;
+    public GameObject orb;
     public GameObject explosion;
     private Renderer buttonRenderer;
     [SerializeField] private bool pressed = false;
@@ -21,6 +21,7 @@ public class pushButtonToDamageOrb : MonoBehaviour
         if (pressed) return;
         pressed = true;
         buttonRenderer.material.SetColor("_Color", Color.green);
-        Instantiate(explosion, orb.position, orb.rotation, orb);
+        Instantiate(explosion, orb.transform.position, orb.transform.rotation);
+        orb.GetComponent<BossDeath>().ApplyDamage();
     }
 }
