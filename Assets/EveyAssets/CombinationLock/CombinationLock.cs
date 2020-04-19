@@ -16,7 +16,7 @@ public class CombinationLock : MonoBehaviour
 
     [SerializeField]
     private bool[] locks = new bool[4];
-
+    public bool mustBeInOrder = false;
     public bool opened = false;
 
     public CombinationLockButton[] buttonOrder = new CombinationLockButton[4];
@@ -51,7 +51,7 @@ public class CombinationLock : MonoBehaviour
                 continue;
             }
 
-            if(buttonOrder[i] == buttonPressed)
+            if(buttonOrder[i] == buttonPressed || !mustBeInOrder)
             {
                 locks[i] = true;
                 doorLights[i].color = Color.green;

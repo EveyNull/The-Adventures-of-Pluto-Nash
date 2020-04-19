@@ -8,13 +8,6 @@ public class Balance : MonoBehaviour
     private GameObject player;
     public bool FakeBalance = true;
     public float playerForce = 5;
-    private Quaternion originalRot;
-
-    private void Start()
-    {
-        originalRot = transform.rotation;
-        //not sure why this doesnt work, I hate quaternions so much
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -38,7 +31,7 @@ public class Balance : MonoBehaviour
     {
         if (player == null)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, originalRot, Time.deltaTime * 2);
+            transform.rotation = Quaternion.Euler(0,0,0);
             return;
         }
 
@@ -49,25 +42,25 @@ public class Balance : MonoBehaviour
         {
             if (pos.x > 0)
             {
-                quatChange *= Quaternion.Euler(0, originalRot.y, -10);
+                quatChange *= Quaternion.Euler(0, 0, -10);
             }
             else if (pos.x < 0)
             {
-                quatChange *= Quaternion.Euler(0, originalRot.y, 10);
+                quatChange *= Quaternion.Euler(0, 0, 10);
             }
 
             if (pos.z > 0)
             {
-                quatChange *= Quaternion.Euler(10, originalRot.y, 0);
+                quatChange *= Quaternion.Euler(10, 0, 0);
             }
             else if (pos.z < 0)
             {
-                quatChange *= Quaternion.Euler(-10, originalRot.y, 0);
+                quatChange *= Quaternion.Euler(-10, 0, 0);
             }
         }
         else
         {
-            quatChange *= Quaternion.Euler(pos.z * playerForce, originalRot.y, pos.x * -playerForce);
+            quatChange *= Quaternion.Euler(pos.z * playerForce, 0, pos.x * -playerForce);
         }
 
         transform.rotation = Quaternion.Slerp(transform.rotation, quatChange, Time.deltaTime);

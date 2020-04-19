@@ -21,7 +21,8 @@ public class Combat_Slime : MonoBehaviour
     Renderer render;
     public Material hit;
     public Material norm;
-
+    private enemyController controller;
+    public GameObject particle;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,9 @@ public class Combat_Slime : MonoBehaviour
         anim = gameObject.GetComponentInChildren<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         NavMesh = GetComponent<NavMeshAgent>();
-    }
+        controller = GetComponent<enemyController>();
+     
+}
 
     public void TakeDamage(int damage)
     {
@@ -128,5 +131,25 @@ IEnumerator deathdelay()
       rb.detectCollisions = true;
         rb.velocity = Vector3.zero;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        Transform otherTrans = other.transform;
+        if (other.CompareTag("LeftFist"))
+        {
+            Instantiate(particle, otherTrans.position, otherTrans.rotation);
+            controller.hitBack = .4f;
+         
+        }
+        else if (other.CompareTag("Explosion"))
+        {
+            Instantiate(particle, otherTrans.position, otherTrans.rotation);
+       
+        }
+        else if (other.CompareTag("Player"))
+        {
+            controller.hitBack = .4f;
+            other.GetComponent<playerControlLerpSmoothAnim>().Stun();
 
+        }
+    }
 }

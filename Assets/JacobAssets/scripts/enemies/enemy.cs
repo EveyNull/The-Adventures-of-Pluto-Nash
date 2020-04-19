@@ -19,27 +19,27 @@ public class enemy : MonoBehaviour
         controller = GetComponent<enemyController>();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Transform otherTrans = other.transform;
-        if (other.CompareTag("LeftFist"))
-        {
-            Instantiate(particle, otherTrans.position, otherTrans.rotation);
-            controller.hitBack = .4f;
-            LoseHealth(1);
-        }
-        else if (other.CompareTag("Explosion"))
-        {
-            Instantiate(particle, otherTrans.position, otherTrans.rotation);
-            LoseHealth(3);
-        }
-        else if(other.CompareTag("Player"))
-        {
-            controller.hitBack = .4f;
-            other.GetComponent<playerControlLerpSmoothAnim>().Stun();
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    Transform otherTrans = other.transform;
+    //    if (other.CompareTag("LeftFist"))
+    //    {
+    //        Instantiate(particle, otherTrans.position, otherTrans.rotation);
+    //        controller.hitBack = .4f;
+    //        LoseHealth(1);
+    //    }
+    //    else if (other.CompareTag("Explosion"))
+    //    {
+    //        Instantiate(particle, otherTrans.position, otherTrans.rotation);
+    //        LoseHealth(3);
+    //    }
+    //    else if(other.CompareTag("Player"))
+    //    {
+    //        controller.hitBack = .4f;
+    //        other.GetComponent<playerControlLerpSmoothAnim>().Stun();
 
-        }
-    }
+    //    }
+    //}
 
     void LoseHealth(int dmg)
     {

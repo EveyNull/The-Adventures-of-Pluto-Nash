@@ -10,7 +10,6 @@ public class jumpPad : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("jumpytime");
             other.GetComponent<playerControlLerpSmoothAnim>().velocity.y = force;
         }
     }
