@@ -5,26 +5,23 @@ using UnityEngine;
 
 public class Balance : MonoBehaviour
 {
-    private GameObject player;
+    [SerializeField]
+    private Transform player;
     public bool FakeBalance = true;
     public float playerForce = 5;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
-        {
-            player = other.gameObject;
-            player.transform.SetParent(this.transform);
-        }
+        if (!other.CompareTag("Player")) return;
+        player = other.GetComponentInParent<Transform>();
+        player.transform.SetParent(transform);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            player.transform.SetParent(null);
-            player = null;
-        }
+        if (!other.CompareTag("Player")) return;
+        player.transform.SetParent(null);
+        player = null;
     }
 
     private void Update()

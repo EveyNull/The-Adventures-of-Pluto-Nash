@@ -12,6 +12,7 @@
             <e p="BreakablePlatform.cs" t="Include" />
             <e p="CollapsingCorridor.cs" t="Include" />
             <e p="Door.cs" t="Include" />
+            <e p="MainMenu.cs" t="Include" />
             <e p="PlayerCam.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
           </e>
