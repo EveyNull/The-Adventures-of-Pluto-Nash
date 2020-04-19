@@ -16,6 +16,7 @@ public class CombinationLock : MonoBehaviour
 
     [SerializeField]
     private bool[] locks = new bool[4];
+    private List<CombinationLockButton> buttonsPressed;
     public bool mustBeInOrder = false;
     public bool opened = false;
 
@@ -23,6 +24,11 @@ public class CombinationLock : MonoBehaviour
 
     private void Start()
     {
+
+        if (!mustBeInOrder)
+        {
+            buttonsPressed = new List<CombinationLockButton>();
+        }
         if (FindObjectOfType<SceneChangeData>().previousScene == 2)
         {
             foreach(Light light in doorLights)
@@ -46,17 +52,29 @@ public class CombinationLock : MonoBehaviour
     {
         for(int i = 0; i < locks.Length; i++)
         {
+            bool unlockLock = false;
             if(locks[i])
             {
                 continue;
             }
+            
+            if(!mustBeInOrder && !buttonsPressed.Contains(buttonPressed))
+            {
+                buttonsPressed.Add(buttonPressed);
+                unlockLock = true;
+            }
 
-            if(buttonOrder[i] == buttonPressed || !mustBeInOrder)
+            if(buttonOrder[i] == buttonPressed)
+            {
+                unlockLock = true;
+            }
+
+            if(unlockLock)
             {
                 locks[i] = true;
                 doorLights[i].color = Color.green;
                 correct.Play();
-                if(i == locks.Length-1)
+                if (i == locks.Length - 1)
                 {
                     door.StartDoorOpen();
                     opened = true;
@@ -66,7 +84,10 @@ public class CombinationLock : MonoBehaviour
             else
             {
                 incorrect.Play();
-                ResetAllLocks();
+                if (mustBeInOrder)
+                {
+                    ResetAllLocks();
+                }
             }
             break;
         }
