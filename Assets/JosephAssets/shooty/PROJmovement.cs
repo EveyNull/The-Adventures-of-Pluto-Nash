@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PROJmovement : MonoBehaviour
 {
-    GameObject player;
+    public GameObject player;
     public int Speed = 5;
     public float lifetime = 20f;
     Vector3 PlayerPos;

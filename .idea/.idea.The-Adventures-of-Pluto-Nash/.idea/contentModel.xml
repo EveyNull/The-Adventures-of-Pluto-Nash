@@ -9,6 +9,7 @@
       <e p="Assets" t="Include">
         <e p="BradAssets" t="Include">
           <e p="Scripts" t="Include">
+            <e p="BossDeath.cs" t="Include" />
             <e p="BreakablePlatform.cs" t="Include" />
             <e p="CollapsingCorridor.cs" t="Include" />
             <e p="Door.cs" t="Include" />
@@ -18,6 +19,7 @@
           </e>
         </e>
         <e p="BulletStunAndDamage.cs" t="Include" />
+        <e p="childplayer.cs" t="Include" />
         <e p="EveyAssets" t="Include">
           <e p="CombinationLock" t="Include">
             <e p="Button.cs" t="Include" />

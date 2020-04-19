@@ -8,7 +8,7 @@ public class BulletStunAndDamage : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("hit something");
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Blockade"))
         {
             Debug.Log("hit something tagged player");
             if (other.GetComponent<playerControlLerpSmoothAnim>())
