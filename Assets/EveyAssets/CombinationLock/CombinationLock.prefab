@@ -62,6 +62,7 @@ MonoBehaviour:
   doorLook: {fileID: 0}
   lightLook: {fileID: 0}
   locks: 00000000
+  mustBeInOrder: 0
   opened: 0
   buttonOrder:
   - {fileID: 3955684414079558491}

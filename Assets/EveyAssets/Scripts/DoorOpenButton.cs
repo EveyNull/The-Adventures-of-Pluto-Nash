@@ -29,6 +29,12 @@ public class DoorOpenButton : Button
 
     private void Start()
     {
+        if (FindObjectOfType<SceneChangeData>().previousScene == 1)
+        {
+            door.SetDoorOpen();
+            doorClosed = false;
+
+        }
 
         RaycastHit hit;
         Physics.Raycast(playerStandAt.position + Vector3.up, Vector3.down, out hit);
@@ -41,57 +47,41 @@ public class DoorOpenButton : Button
 
     protected override void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<MoveScript>() && doorClosed)
+
+        if (other.CompareTag("LeftFist"))
         {
-            interactImage.enabled = true;
+            HitButton();
         }
     }
 
     public override void HitButton()
     {
+        if (doorClosed)
+        {
+            StartCoroutine(DoorOpenCutscene());
+        }
     }
 
-    IEnumerator DoorOpenCutscene(MoveScript target)
+    IEnumerator DoorOpenCutscene()
     {
         doorClosed = false;
-        interactImage.enabled = false;
-
-        target.animator.SetFloat("z", 0f);
-        target.allowMovement = false;
-        target.animator.applyRootMotion = false;
 
         Camera camera = Camera.main;
 
-        camera.GetComponent<CameraMoveScript>().enabled = false;
+        camera.enabled = false;
 
-        if (target.GetComponent<ButtonSeenCutscene>().GetSeenCutscene())
-        {
-            camera.transform.position = buttonCameraPos.position;
-            camera.transform.rotation = buttonCameraPos.rotation;
+        GameObject obj = new GameObject();
+        Camera tempCamera = obj.AddComponent<Camera>();
 
-            target.transform.position = playerStandAt.position;
-            target.transform.rotation = playerStandAt.rotation;
-        }
-        else
-        {
-            StartCoroutine(MoveCamera(camera, buttonCameraPos));
+        tempCamera.transform.position = buttonCameraPos.position;
+        tempCamera.transform.rotation = buttonCameraPos.rotation;
+        playerControlLerpSmoothAnim player = FindObjectOfType<playerControlLerpSmoothAnim>();
+        player.transform.position = playerStandAt.position;
+        player.transform.rotation = playerStandAt.rotation;
 
-            wait = true;
-            StartCoroutine(RotateObjectToLookAt(target.transform, playerStandAt));
-            while (wait) yield return 0;
+        player.enabled = false;
 
-            wait = true;
-            StartCoroutine(MovePlayerToPos(target, playerStandAt));
-            while (wait) yield return 0;
-
-            wait = true;
-            StartCoroutine(RotateObjectToLookAt(target.transform, transform));
-            while (wait) yield return 0;
-        }
-        target.animator.SetTrigger("AttackTrigger");
-        target.animator.speed = 0.5f;
-        yield return new WaitForSeconds(0.6f);
-        target.animator.speed = 1f;
+        yield return new WaitForSeconds(0.2f);
 
         
 
@@ -130,46 +120,23 @@ public class DoorOpenButton : Button
 
 
         yield return new WaitForSeconds(0.5f);
-        if (target.GetComponent<ButtonSeenCutscene>().GetSeenCutscene())
+        wait = true;
+        StartCoroutine(MoveCamera(tempCamera, doorCameraPos));
+        while (wait) yield return 0;
+        
+
+        door.StartDoorOpen();
+
+        while (!door.complete)
         {
-            camera.transform.position = doorCameraPos.position;
-            camera.transform.rotation = doorCameraPos.rotation;
-
-            door.StartDoorOpen();
-
-            yield return new WaitForSeconds(1f);
-
-        }
-        else
-        {
-            StartCoroutine(MoveCamera(camera, doorCameraPos));
-
-            wait = true;
-            StartCoroutine(RotateObjectToLookAt(target.transform, playerMoveTo));
-            while (wait) yield return 0;
-
-            wait = true;
-            StartCoroutine(MovePlayerToPos(target, playerMoveTo));
-            while (wait)
-            {
-                yield return 0;
-            }
-
-            StartCoroutine(RotateObjectToLookAt(target.transform, doorLookAt));
-
-            door.StartDoorOpen();
-
-            while (!door.complete)
-            {
-                yield return 0;
-            }
+            yield return 0;
         }
 
-        target.allowMovement = true;
-        target.animator.applyRootMotion = true;
-        camera.GetComponent<CameraMoveScript>().enabled = true;
 
-        target.GetComponent<ButtonSeenCutscene>().SetSeenCutscene();
+        Destroy(tempCamera);
+
+        camera.enabled = true;
+        player.enabled = true;
 
         yield break;
     }
@@ -188,6 +155,7 @@ public class DoorOpenButton : Button
             camera.transform.rotation = Quaternion.Slerp(startRot, target.transform.rotation, lerpValue);
             yield return 0;
         }
+        wait = false;
     }
 
     IEnumerator RotateObjectToLookAt(Transform target, Transform lookAt)
