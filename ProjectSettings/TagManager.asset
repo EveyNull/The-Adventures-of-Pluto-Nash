@@ -12,6 +12,7 @@ TagManager:
   - Explosion
   - LeftFist
   - S
+  - Blockade
   layers:
   - Default
   - TransparentFX
