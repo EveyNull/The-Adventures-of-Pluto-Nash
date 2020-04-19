@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 253d9a0ba8db38e48a64128a72209cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   FakeBalance: 0
   playerForce: 10
 --- !u!1001 &7497318649734321353
@@ -99,6 +100,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2648892636531582188}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 9ab0eff87b6815340badf3748f4074d8,
+        type: 3}
+      propertyPath: m_Name
+      value: newbarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9ab0eff87b6815340badf3748f4074d8,
+        type: 3}
+      propertyPath: m_TagString
+      value: world
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9ab0eff87b6815340badf3748f4074d8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -168,16 +179,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 9ab0eff87b6815340badf3748f4074d8,
-        type: 3}
-      propertyPath: m_Name
-      value: newbarrel
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 9ab0eff87b6815340badf3748f4074d8,
-        type: 3}
-      propertyPath: m_TagString
-      value: world
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 9ab0eff87b6815340badf3748f4074d8,
         type: 3}

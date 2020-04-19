@@ -14693,7 +14693,7 @@ GameObject:
   - component: {fileID: 1434773933}
   m_Layer: 0
   m_Name: Updated Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22019,6 +22019,9 @@ MonoBehaviour:
   hand: {fileID: 8928344667552463475}
   bodyTire: {fileID: 6339589514796460240}
   tireSmoke: {fileID: 3477288083836469281}
+  pointsText: {fileID: 0}
+  doubleJumpText: {fileID: 0}
+  superSpeedText: {fileID: 0}
   input: {x: 0, y: 0}
   velocity: {x: 0, y: 0, z: 0}
   topSpeed: 20

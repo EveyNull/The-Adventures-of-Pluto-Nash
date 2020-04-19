@@ -25,10 +25,13 @@ namespace PathCreation.Examples
             }
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
+
+
+
             if (pathCreator == null) return;
-            
+
             if (moving && currentSpeed != speed)
             {
                 currentSpeed += Time.deltaTime * speed;
@@ -45,6 +48,8 @@ namespace PathCreation.Examples
 
             //transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction).z);
         }
+    
+  
 
         // If the path changes during the game, update the distance travelled so that the follower's position on the new path
         // is as close as possible to its position on the old path
