@@ -23,18 +23,20 @@ public class Combat_Slime : MonoBehaviour
     public Material norm;
     private enemyController controller;
     public GameObject particle;
+    public int Damage = 1;
+    Attacking getat;
     // Start is called before the first frame update
     void Start()
     {
-
+    
        rb = gameObject.GetComponent<Rigidbody>();
         render = gameObject.GetComponent<Renderer>();
         anim = gameObject.GetComponentInChildren<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         NavMesh = GetComponent<NavMeshAgent>();
         controller = GetComponent<enemyController>();
-     
-}
+        getat = GameObject.FindGameObjectWithTag("Player").GetComponent<Attacking>();
+    }
 
     public void TakeDamage(int damage)
     {
@@ -95,8 +97,9 @@ IEnumerator deathdelay()
 
         if (script.FormsLeft == 1)
         {
+
              script.health = maxhealth- 1;
-           
+          
         }
         else if (script.FormsLeft == 0)
         {
@@ -149,6 +152,7 @@ IEnumerator deathdelay()
         {
             controller.hitBack = .4f;
             other.GetComponent<playerControlLerpSmoothAnim>().Stun();
+            other.GetComponent<Attacking>().TakeDamage(Damage);
 
         }
     }

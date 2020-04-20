@@ -342,6 +342,7 @@ MonoBehaviour:
   hit: {fileID: 0}
   norm: {fileID: 0}
   particle: {fileID: 0}
+  Damage: 1
 --- !u!1 &6352096285853314574
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +478,7 @@ MonoBehaviour:
   norm: {fileID: 0}
   particle: {fileID: 4285589437128806645, guid: 286e93bf04103b547894cec405c99fc7,
     type: 3}
+  Damage: 1
 --- !u!65 &3120477138538133174
 BoxCollider:
   m_ObjectHideFlags: 0

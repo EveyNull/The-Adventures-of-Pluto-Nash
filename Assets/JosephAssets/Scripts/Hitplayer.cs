@@ -40,32 +40,13 @@ public class Hitplayer : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
-          //  getmove.fight = true;
-          // StartCoroutine(colour());
+       
             Debug.Log("hate");
-            StartCoroutine(HITB());
+            getat.Phealth -= 1;
         }
     
-     IEnumerator colour()
-        {
-            render.material = hit;
-            yield return new WaitForSeconds(1);
-            render.material = angry;
-
-        }
+   
         
     }
-    IEnumerator HITB()
-    {
-        
-        rb.AddForce(-transform.forward * 500f);
-        rb.detectCollisions = false;
-        getat.Phealth -= 1;
-      
-       
-        yield return new WaitForSeconds(0.5f);
-
-        rb.detectCollisions = true;
-        rb.velocity = Vector3.zero;
-    }
+  
 }

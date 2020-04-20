@@ -52,6 +52,13 @@ public class Attacking : MonoBehaviour
 
 
     }
+    public void TakeDamage(int damage)
+    {
+
+        Phealth -= damage;
+
+       
+    }
 
     IEnumerator hashit()
     {
@@ -83,7 +90,7 @@ public class Attacking : MonoBehaviour
         }
 
 
-      //   hpb.health(Phealth); 
+        hpb.health(Phealth); 
 
 
         if (Input.GetButtonDown("Fire1") && hasAttacked == false)
