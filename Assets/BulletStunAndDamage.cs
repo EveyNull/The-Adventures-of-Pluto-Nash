@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletStunAndDamage : MonoBehaviour
 {
+    int Damage = 1;
     public bool deathEnabled = true;
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,7 @@ public class BulletStunAndDamage : MonoBehaviour
             if (other.GetComponent<playerControlLerpSmoothAnim>())
             {
                 other.GetComponent<playerControlLerpSmoothAnim>().Stun();
+                other.GetComponent<Attacking>().TakeDamage(Damage);
             }
 
             if(deathEnabled) Destroy(transform.parent.gameObject);
