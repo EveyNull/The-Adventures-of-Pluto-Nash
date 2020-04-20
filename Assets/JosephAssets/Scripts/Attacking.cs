@@ -70,7 +70,7 @@ public class Attacking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Phealth == 0)
+        if(Phealth <= 0)
         {
             StartCoroutine(respawn());
         }
@@ -121,8 +121,8 @@ public class Attacking : MonoBehaviour
 
         IEnumerator respawn()
         {
-          
-               
+
+
             transform.position = spawn.transform.position;
            
             yield return new WaitForSeconds(0f);

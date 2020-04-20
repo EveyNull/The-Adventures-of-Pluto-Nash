@@ -1891,6 +1891,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b9ae57c0fb7fb640815c26df727dccc, type: 3}
+--- !u!1 &616669484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 616669485}
+  m_Layer: 0
+  m_Name: Spawn lvl1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &616669485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616669484}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24.72, y: 0, z: 7.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 34
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &657309019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4394,6 +4424,11 @@ PrefabInstance:
       propertyPath: doubleJumpText
       value: 
       objectReference: {fileID: 842673904}
+    - target: {fileID: 8928344667552463791, guid: 4043707b6ae84a7498ccca2e85249d38,
+        type: 3}
+      propertyPath: Spawn
+      value: 
+      objectReference: {fileID: 616669485}
     - target: {fileID: 8283775474264129877, guid: 4043707b6ae84a7498ccca2e85249d38,
         type: 3}
       propertyPath: hpb

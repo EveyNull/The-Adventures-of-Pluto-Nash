@@ -73,8 +73,8 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
     private GameObject PunchParticle;
     
     public int points = 0;
-   
 
+    public Transform Spawn;
     //combat
     bool isAttacking = false;
 
@@ -88,6 +88,7 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
     public bool blocked = false;
 
     public bool inCutscene;
+    Attacking atat;
 
     void Start()
     {
@@ -102,14 +103,16 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
         SpeedParticle = transform.GetChild(3).GetChild(1).gameObject;
         PunchParticle = transform.GetChild(3).GetChild(2).gameObject;
         voiceline = GetComponent<AudioSource>();
-
-        oldPosUpdateScript = oldPosObj.GetComponent<oldPosUpdate>();
+        
+       oldPosUpdateScript = oldPosObj.GetComponent<oldPosUpdate>();
+        atat = GetComponent<Attacking>();
     }
 
     void Update()
     {
         position = transform.position;
 
+      
         Gravity();
 
         if (!inCutscene)
@@ -153,6 +156,12 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
         }
 
         pointsText.text = ": " + points.ToString();
+
+if(atat.Phealth <=0)
+        {
+            Debug.Log("teleport boi");
+            transform.position = Spawn.transform.position;
+        }
     }
 
     //take input from both horizontal and vertical, X and Z in the world and make it input.
