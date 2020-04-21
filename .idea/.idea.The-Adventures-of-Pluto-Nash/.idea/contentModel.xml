@@ -326,6 +326,8 @@
             <e p="PROJmovement.cs" t="Include" />
           </e>
         </e>
+        <e p="KeyInSlime.cs" t="Include" />
+        <e p="KillPlayer.cs" t="Include" />
         <e p="SceneChangeData.cs" t="Include" />
         <e p="SceneTransition.cs" t="Include" />
         <e p="SetStartPos.cs" t="Include" />

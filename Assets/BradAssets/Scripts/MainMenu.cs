@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     public void PlayButton()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void ExitButton()
