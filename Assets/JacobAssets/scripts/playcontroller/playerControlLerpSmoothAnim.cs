@@ -60,6 +60,7 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
     float jump = 10f;
     public int maxJumps = 1;
     int jumpsRemaining = 0;
+    public bool Dead;
 
     //upgrades
     public bool jumpAltered = false;
@@ -157,10 +158,10 @@ public class playerControlLerpSmoothAnim : MonoBehaviour
 
         pointsText.text = ": " + points.ToString();
 
-if(atat.Phealth <=0)
+        if (atat.Phealth <= 0 || Dead == true)
         {
-            Debug.Log("teleport boi");
-            transform.position = Spawn.transform.position;
+            respawn();
+            Dead = false;
         }
     }
 
@@ -188,9 +189,11 @@ if(atat.Phealth <=0)
             camR = camR.normalized;
         }
     }
-    
+ 
+
+
     //colliding with world makes you grounded
-        public void groundStay(Collider other)
+    public void groundStay(Collider other)
     { 
         if (!isAttacking)
         {
@@ -425,6 +428,21 @@ if(atat.Phealth <=0)
     {
         yield return new WaitForSeconds(.4f);
         inCutscene = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("KillBox"))
+        {
+            Debug.Log("hitkillbox");
+            Dead = true;
+           // respawn();
+        }
+    }
+    public void respawn()
+    {
+        Debug.Log("teleport boi");
+        transform.position = Spawn.transform.position;
     }
 }
 // using this script set your Horizontal and Vertical input Gravity and

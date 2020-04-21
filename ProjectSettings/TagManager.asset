@@ -13,6 +13,7 @@ TagManager:
   - LeftFist
   - S
   - Blockade
+  - KillBox
   layers:
   - Default
   - TransparentFX
